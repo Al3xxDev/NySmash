@@ -16,6 +16,9 @@
   <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="assets/photos/Logo.jpg">
 
+  <!-- Leaflet.js Dark Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -167,7 +170,7 @@
           <p class="menu-card-desc">Triplo potato bun, doppio Smash Burger 100% manzo, doppio American cheese, insalata, cetriolini, cipolla e salsa Burger.</p>
           <div class="menu-card-footer">
             <a href="https://booxit.it/app/nysmashburger" target="_blank" rel="noopener noreferrer" class="btn btn-outline menu-card-btn">
-              Aggiungi
+              Ordina
             </a>
           </div>
         </div>
@@ -184,7 +187,7 @@
           <p class="menu-card-desc">Potato bun, smash Burger 100% manzo, American cheese, bacon croccante, Patty di Mac'n cheese, salsa smoke.</p>
           <div class="menu-card-footer">
             <a href="https://booxit.it/app/nysmashburger" target="_blank" rel="noopener noreferrer" class="btn btn-outline menu-card-btn">
-              Aggiungi
+              Ordina
             </a>
           </div>
         </div>
@@ -201,7 +204,7 @@
           <p class="menu-card-desc">Potato bun, smash Burger 100% manzo, American cheese, onion rings, salsa smoke, bacon croccante.</p>
           <div class="menu-card-footer">
             <a href="https://booxit.it/app/nysmashburger" target="_blank" rel="noopener noreferrer" class="btn btn-outline menu-card-btn">
-              Aggiungi
+              Ordina
             </a>
           </div>
         </div>
@@ -216,7 +219,7 @@
           <p class="menu-card-desc">Potato bun, Pulled Pork, rosti di patate, cipolla caramellata, cheddar fuso, salsa BBQ.</p>
           <div class="menu-card-footer">
             <a href="https://booxit.it/app/nysmashburger" target="_blank" rel="noopener noreferrer" class="btn btn-outline menu-card-btn">
-              Aggiungi
+              Ordina
             </a>
           </div>
         </div>
@@ -233,7 +236,7 @@
           <p class="menu-card-desc">Potato bun, smash Burger 100% manzo, American cheese, insalata, pomodori, salsa burger.</p>
           <div class="menu-card-footer">
             <a href="https://booxit.it/app/nysmashburger" target="_blank" rel="noopener noreferrer" class="btn btn-outline menu-card-btn">
-              Aggiungi
+              Ordina
             </a>
           </div>
         </div>
@@ -248,7 +251,7 @@
           <p class="menu-card-desc">Potato bun, smash Burger 100% manzo, American cheese, cipolla, sottaceti, senape, ketchup</p>
           <div class="menu-card-footer">
             <a href="https://booxit.it/app/nysmashburger" target="_blank" rel="noopener noreferrer" class="btn btn-outline menu-card-btn">
-              Aggiungi
+              Ordina
             </a>
           </div>
         </div>
@@ -350,28 +353,11 @@
           </div>
         </div>
 
-        <!-- Col 2: Google Maps B&W Dark Mode with Neon Fluo Pin -->
+        <!-- Col 2: Leaflet Interactive Dark Map with Neon Fluo Pin -->
         <div class="footer-col-map">
           <div class="footer-label" style="margin-bottom: 0.8rem;">Mappa & Raggiungici</div>
           <div class="map-wrapper">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027.653457193297!2d14.770984876612984!3d40.68153094014902!2m3!1f0!1f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133bc4501a39626d%3A0xb35a396d11f67f70!2sVia%20Irno%2C%2024%2C%2084135%20Salerno%20SA!5e0!3m2!1sit!2sit!4v1700000000000!5m2!1sit!2sit" 
-              allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Google Maps NySmash Salerno Via Irno 24">
-            </iframe>
-            
-            <!-- Neon Fluo Animated Pin Indicator -->
-            <div class="neon-map-pin" title="NySmash Burger - Via Irno 24, Salerno">
-              <div class="pin-tooltip">NYSMASH • Via Irno 24</div>
-              <div class="pin-marker">
-                <svg viewBox="0 0 24 24">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                </svg>
-              </div>
-              <div class="pin-pulse"></div>
-            </div>
+            <div id="map"></div>
           </div>
         </div>
 
@@ -420,6 +406,7 @@
   </footer>
 
   <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="js/main.js"></script>
 </body>
 </html>

@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLiveStoreStatus();
   initActiveNavObserver();
   initVideoPlayback();
+  initInteractiveMap();
 });
 
 /**
@@ -155,5 +156,53 @@ function initVideoPlayback() {
     video.play().catch(err => {
       console.log('Autoplay restriction handled:', err);
     });
+  });
+}
+
+/**
+ * Interactive Leaflet Dark Map anchored at Via Irno 24, Salerno
+ */
+function initInteractiveMap() {
+  const mapElement = document.getElementById('map');
+  if (!mapElement || typeof L === 'undefined') return;
+
+  // Exact user-provided coordinates for NySmash Burger (Via Irno 24, Salerno)
+  const lat = 40.683219535504925;
+  const lng = 14.775719503057992;
+
+  const map = L.map('map', {
+    center: [lat, lng],
+    zoom: 17,
+    scrollWheelZoom: false
+  });
+
+  // Dark High-Contrast Tiles (CartoDB Dark Matter)
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+  }).addTo(map);
+
+  // Custom Neon Fluo Pin Marker attached to coordinates
+  const fluoIcon = L.divIcon({
+    className: 'custom-leaflet-neon-pin',
+    html: `
+      <div class="neon-map-pin" title="NySmash Burger - Via Irno 24, Salerno">
+        <div class="pin-tooltip">NYSMASH • Via Irno 24</div>
+        <div class="pin-marker">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+        </div>
+        <div class="pin-pulse"></div>
+      </div>
+    `,
+    iconSize: [0, 0],
+    iconAnchor: [0, 0]
+  });
+
+  const marker = L.marker([lat, lng], { icon: fluoIcon }).addTo(map);
+
+  marker.on('click', () => {
+    window.open('https://maps.app.goo.gl/JF8Pb9fP7JtvnqQN6', '_blank');
   });
 }
